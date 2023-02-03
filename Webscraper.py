@@ -5,8 +5,7 @@ import sqlite3
 
 
 def get_model():
-    model = input("What video card model you want to search for? ")
-    return model
+    return input("What video card model you want to search for? ")
 
 
 def get_clean_page(search_term):
@@ -34,7 +33,7 @@ def parse_page(pages, doc, search_term):
             try:
                 price = next_parent.find(class_="price-current").strong.string
                 items_found[item] = {"price": int(price.replace(",", "")), "link": link}
-            except:
+            except Exception:
                 pass
     print(items_found)
     sorted_items = sorted(items_found.items(), key=lambda x: x[1]['price'])
@@ -62,6 +61,7 @@ def main():
     material, document = get_clean_page(choice)
     result = parse_page(material, document, choice)
     store_data(result)
+
 
 if __name__ == '__main__':
     main()
