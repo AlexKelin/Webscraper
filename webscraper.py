@@ -1,3 +1,4 @@
+import contextlib
 from bs4 import BeautifulSoup
 import requests
 import re
@@ -30,11 +31,9 @@ def parse_page(pages, doc, search_term):
                 continue
             link = parent['href']
             next_parent = item.find_parent(class_="item-container")
-            try:
+            with contextlib.suppress(Exception):
                 price = next_parent.find(class_="price-current").strong.string
                 items_found[item] = {"price": int(price.replace(",", "")), "link": link}
-            except Exception:
-                pass
     print(items_found)
     sorted_items = sorted(items_found.items(), key=lambda x: x[1]['price'])
     for item in sorted_items:
@@ -65,3 +64,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
