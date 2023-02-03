@@ -18,20 +18,6 @@ items_found = {}  # WE put the results here
 page_text = doc.find(class_='list-tool-pagination-text').strong
 # print(page_text)
 
-# <strong>1<!-- -->/<!-- -->8</strong>
-# We got the small piece so we need to convert everything to string, split it in two parts
-# And get the part on the right
-# Elements in the page_text are divided and counted by "/"
-# pages = str(page_text).split('/')[-2]
-# print(pages)
-
-# <!-- -->8<
-# Extracting the number, it could be 2 or 3 digit, so we need to split
-# pages = str(page_text).split('/')[-2].split('>')[-1][:-1]
-# print(pages)
-
-# ['<!-- --', '8<'] we need the second element, i add up there [-1],
-# And we add [:-1] to remove the "<"
 
 # Result: 8, now we need the number to turn into an int
 pages = int(str(page_text).split('/')[-2].split('>')[-1][:-1])
