@@ -70,7 +70,7 @@ for item in sorted_items:
     c.execute("INSERT INTO newegg VALUES (?, ?, ?)", (item[0], item[1]['price'], item[1]['link']))
 conn.commit()
 conn.close()
-
+print("Done")
 
 
 # If you look at the HTML, you can see that <item-cells-wrap border-cells
