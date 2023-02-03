@@ -12,15 +12,8 @@ url = f"https://www.newegg.ca/p/pl?d={search_term}&N=4131"  # &N = 4131 is a
 page = requests.get(url).text
 doc = BeautifulSoup(page, "html.parser")
 items_found = {}  # WE put the results here
-# There are multiple pages on search result, we need to know how much pages
-# total there is and get the number = "list-tool-pagination-text" section in HTML
-# page_text = doc.find(class_='list-tool-pagination-text')
 
-# Enter the moddel type we want :3080
-# And we get
-# "<span class="list-tool-pagination-text">
-# Page<!-- --> <strong>1<!-- -->/<!-- -->8</strong></span>"
-# WE add the <strong tag to search and get, we seek to get out the number 8 - total pages:
+
 
 page_text = doc.find(class_='list-tool-pagination-text').strong
 # print(page_text)
