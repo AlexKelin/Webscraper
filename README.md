@@ -1,4 +1,4 @@
-Webscraper Video Card Search Tool
+**Webscraper Video Card Search Tool**
 
 This is a simple Python program that allows the user to search for video card models on the Newegg website and retrieve the prices and links for the products and store the results to an SQL database.
 
